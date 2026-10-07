@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malone Net Agencies</title>
+    <meta
+      name="description"
+      content="Malone Net Agencies offers digital strategy, branding, web development, and growth solutions for businesses."
+    />
+    <style>
+      :root {
+        --bg: #071a26;
+        --bg-2: #0d2435;
+        --panel: #0f2d3d;
+        --panel-2: #143a4d;
+        --primary: #59d7c5;
+        --primary-2: #9be7dc;
+        --accent: #f8b94a;
+        --text: #edf7ff;
+        --muted: #b3cfe0;
+        --line: rgba(255, 255, 255, 0.08);
+        --shadow: 0 24px 60px rgba(2, 14, 22, 0.35);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(180deg, #071a26 0%, #0a1d2b 100%);
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      img { max-width: 100%; display: block; }
+      a { color: inherit; text-decoration: none; }
+      button, input, textarea { font: inherit; }
+
+      .container {
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(7, 26, 38, 0.7);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 78px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--primary), #78d0f0);
+        color: #062637;
+        font-size: 1.2rem;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+      }
+
+      .nav-links a:hover { color: var(--text); }
+
+      .nav-cta {
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #072837;
+        padding: 12px 18px;
+        border-radius: 100px;
+        font-weight: 800;
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 90px 0 80px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 52px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(89, 215, 197, 0.08);
+        border: 1px solid rgba(89, 215, 197, 0.2);
+        color: var(--primary-2);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      h1 {
+        font-size: clamp(2.9rem, 6vw, 5.1rem);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+        margin: 18px 0 20px;
+      }
+
+      .lead {
+        max-width: 620px;
+        font-size: 1.08rem;
+        color: var(--muted);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        padding: 0 24px;
+        border-radius: 15px;
+        font-weight: 800;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #072837;
+        box-shadow: var(--shadow);
+      }
+
+      .btn-secondary {
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.02);
+        color: var(--text);
+      }
+
+      .hero-metrics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 36px;
+        margin-top: 34px;
+      }
+
+      .metric {
+        min-width: 120px;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: clamp(1.8rem, 3vw, 2.4rem);
+        letter-spacing: -0.05em;
+      }
+
+      .metric span {
+        color: var(--muted);
+      }
+
+      .hero-visual {
+        position: relative;
+        min-height: 520px;
+      }
+
+      .visual-back {
+        position: absolute;
+        inset: 0;
+        border-radius: 32px;
+        background: linear-gradient(150deg, rgba(22, 63, 77, 0.9), rgba(11, 29, 41, 0.95));
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .visual-back::before {
+        content: "";
+        position: absolute;
+        inset: 26px;
+        background: linear-gradient(160deg, rgba(89,215,197,0.15), rgba(255,255,255,0.03));
+        border-radius: 24px;
+      }
+
+      .dashboard {
+        position: absolute;
+        inset: 58px 42px 44px;
+        background: rgba(7, 24, 34, 0.94);
+        border: 1px solid rgba(255,255,255,0.09);
+        border-radius: 24px;
+        padding: 22px;
+      }
+
+      .browser-dots {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+
+      .browser-dots span {
+        width: 12px;
+        height: 12px;
+        display: block;
+        border-radius: 50%;
+      }
+
+      .browser-dots span:nth-child(1) { background: #ff5f57; }
+      .browser-dots span:nth-child(2) { background: #febc2f; }
+      .browser-dots span:nth-child(3) { background: #28c840; }
+
+      .chart-area {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 16px;
+        height: 230px;
+      }
+
+      .bars {
+        display: flex;
+        align-items: end;
+        gap: 12px;
+        height: 160px;
+        padding: 10px 12px 0;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.02);
+      }
+
+      .bars span {
+        flex: 1;
+        border-radius: 10px 10px 0 0;
+        background: linear-gradient(180deg, var(--primary-2), var(--primary));
+      }
+
+      .bars span:nth-child(1) { height: 32%; }
+      .bars span:nth-child(2) { height: 48%; }
+      .bars span:nth-child(3) { height: 68%; }
+      .bars span:nth-child(4) { height: 86%; }
+      .bars span:nth-child(5) { height: 100%; }
+
+      .ring-wrap {
+        display: grid;
+        place-items: center;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.02);
+      }
+
+      .ring {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: conic-gradient(var(--primary) 0 72%, rgba(255,255,255,0.08) 72% 100%);
+        display: grid;
+        place-items: center;
+      }
+
+      .ring-inner {
+        width: 78px;
+        height: 78px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #0a1d2a;
+        color: var(--primary-2);
+        font-weight: 800;
+      }
+
+      .floating {
+        position: absolute;
+        right: -10px;
+        bottom: 24px;
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: rgba(14, 36, 47, 0.96);
+        border: 1px solid rgba(255,255,255,0.09);
+        box-shadow: var(--shadow);
+      }
+
+      .floating strong {
+        display: block;
+        font-size: 1.9rem;
+        color: var(--primary-2);
+        line-height: 1;
+      }
+
+      section {
+        padding: 90px 0;
+      }
+
+      .section-head {
+        margin-bottom: 34px;
+      }
+
+      .section-head h2 {
+        margin: 12px 0 0;
+        font-size: clamp(2.1rem, 3vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.05em;
+      }
+
+      .section-head p {
+        max-width: 620px;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .card {
+        padding: 28px;
+        border-radius: 22px;
+        background: linear-gradient(180deg, rgba(15, 45, 61, 0.98), rgba(9, 23, 33, 0.98));
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        font-size: 1.5rem;
+        background: linear-gradient(135deg, rgba(89,215,197,0.15), rgba(89,215,197,0.05));
+        color: var(--primary-2);
+        margin-bottom: 18px;
+      }
+
+      .card h3 {
+        margin: 0 0 12px;
+        font-size: 1.45rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .about-wrap {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .about-visual {
+        position: relative;
+        height: 430px;
+        border-radius: 30px;
+        background:
+          radial-gradient(circle at 18% 20%, rgba(89,215,197,0.22), transparent 25%),
+          linear-gradient(155deg, rgba(20,58,77,1), rgba(9,22,31,1));
+        border: 1px solid var(--line);
+        overflow: hidden;
+      }
+
+      .mini-panel {
+        position: absolute;
+        width: 72%;
+        height: 60%;
+        right: 12%;
+        bottom: 12%;
+        background: rgba(8, 24, 35, 0.94);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        padding: 20px;
+      }
+
+      .mini-bars {
+        display: flex;
+        align-items: end;
+        gap: 12px;
+        height: 100%;
+        padding-top: 20px;
+      }
+
+      .mini-bars span {
+        flex: 1;
+        border-radius: 12px 12px 0 0;
+        background: linear-gradient(180deg, var(--primary-2), var(--primary));
+      }
+
+      .mini-bars span:nth-child(1) { height: 28%; }
+      .mini-bars span:nth-child(2) { height: 42%; }
+      .mini-bars span:nth-child(3) { height: 58%; }
+      .mini-bars span:nth-child(4) { height: 80%; }
+      .mini-bars span:nth-child(5) { height: 100%; }
+
+      .about-copy p {
+        color: var(--muted);
+        margin-bottom: 0;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0 0;
+        display: grid;
+        gap: 14px;
+      }
+
+      .feature-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text);
+      }
+
+      .check {
+        width: 26px;
+        height: 26px;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(89,215,197,0.12);
+        color: var(--primary-2);
+        font-weight: 800;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .stat-box {
+        background: linear-gradient(180deg, rgba(15, 45, 61, 1), rgba(8, 25, 33, 1));
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 28px 20px;
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+
+      .stat-box strong {
+        display: block;
+        font-size: clamp(2rem, 3vw, 2.7rem);
+        letter-spacing: -0.06em;
+        color: var(--primary-2);
+      }
+
+      .stat-box span {
+        color: var(--muted);
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .step {
+        position: relative;
+        padding: 28px 24px;
+        border-radius: 22px;
+        background: linear-gradient(180deg, rgba(16,46,63,1), rgba(9,24,34,1));
+        border: 1px solid var(--line);
+      }
+
+      .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: rgba(89,215,197,0.14);
+        color: var(--primary-2);
+        font-weight: 800;
+        margin-bottom: 18px;
+      }
+
+      .step h3 {
+        margin: 0 0 10px;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .project {
+        border-radius: 24px;
+        overflow: hidden;
+        background: linear-gradient(180deg, rgba(15,45,61,1), rgba(10, 24, 33, 1));
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .project-visual {
+        position: relative;
+        height: 220px;
+        background: linear-gradient(135deg, rgba(89,215,197,0.26), rgba(5,20,31,0.2)), linear-gradient(160deg, #163d52, #0a1d2c);
+      }
+
+      .project-visual .shape {
+        position: absolute;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(255,255,255,0.07);
+        border-radius: 18px;
+      }
+
+      .shape.a { width: 150px; height: 94px; left: 28px; top: 42px; }
+      .shape.b { width: 120px; height: 150px; right: 28px; bottom: 18px; }
+
+      .project-body {
+        padding: 22px 22px 28px;
+      }
+
+      .tag {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(89,215,197,0.12);
+        color: var(--primary-2);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .project-body h3 {
+        margin: 0 0 8px;
+      }
+
+      .project-body p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .cta-wrap {
+        padding: 90px 0 110px;
+      }
+
+      .cta-box {
+        padding: 38px 32px;
+        border-radius: 28px;
+        background: linear-gradient(135deg, rgba(89,215,197,0.12), rgba(20,58,77,0.84));
+        border: 1px solid rgba(89,215,197,0.25);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .cta-box h2 {
+        margin: 0 0 8px;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.06em;
+      }
+
+      .cta-box p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 28px 0 54px;
+      }
+
+      .footer-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .footer-copy {
+        color: var(--muted);
+      }
+
+      @media (max-width: 900px) {
+        .nav-links { display: none; }
+        .hero-grid,
+        .about-wrap,
+        .services-grid,
+        .process-grid,
+        .projects-grid,
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-visual {
+          min-height: 380px;
+        }
+
+        .cta-box {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a href="#top" class="brand" aria-label="Malone Net Agencies home">
+          <span class="brand-mark">M</span>
+          <span>Malone Net Agencies</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#process">Process</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="nav-cta" href="#contact">Book a Call</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Digital growth partner</span>
+            <h1>We build brands that grow online.</h1>
+            <p class="lead">
+              Malone Net Agencies helps businesses stand out with powerful digital strategy,
+              modern design, and performance-driven solutions that turn attention into growth.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-primary">Get Started</a>
+              <a href="#services" class="btn btn-secondary">Explore Services</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>120+</strong>
+                <span>Projects</span>
+              </div>
+              <div class="metric">
+                <strong>7 yrs</strong>
+                <span>Experience</span>
+              </div>
+              <div class="metric">
+                <strong>96%</strong>
+                <span>Retention</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Business dashboard visual">
+            <div class="visual-back"></div>
+
+            <div class="dashboard">
+              <div class="browser-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="chart-area">
+                <div class="bars" aria-label="Bar chart">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="ring-wrap">
+                  <div class="ring">
+                    <div class="ring-inner">72%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="floating">
+              <strong>+48%</strong>
+              <span>business growth</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">What we do</span>
+            <h2>Strategy, digital execution, and brand presence.</h2>
+          </div>
+
+          <div class="services-grid">
+            <article class="card">
+              <div class="icon">◎</div>
+              <h3>Web Development</h3>
+              <p>
+                High-converting websites and custom digital experiences designed to
+                represent your business clearly and professionally.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="icon">✦</div>
+              <h3>Brand Identity</h3>
+              <p>
+                Creative direction, positioning, messaging, and design systems that
+                help your brand stand out in competitive markets.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="icon">↗</div>
+              <h3>Marketing Growth</h3>
+              <p>
+                SEO, social strategy, and campaign planning that drives visibility,
+                leads, and stronger business results.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container about-wrap">
+          <div class="about-visual" aria-label="Company analytics graphic">
+            <div class="mini-panel">
+              <div class="mini-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-copy">
+            <div class="section-head" style="margin-bottom: 18px;">
+              <span class="eyebrow">About us</span>
+              <h2>We help businesses become more visible, trusted, and successful.</h2>
+            </div>
+
+            <p>
+              Malone Net Agencies is a results-focused creative and digital firm helping
+              companies grow through sharper branding, better online experiences, and better
+              customer engagement strategies.
+            </p>
+
+            <p>
+              We work closely with founders and organizations to translate business goals into
+              meaningful digital growth, while keeping every decision practical, measurable, and aligned.
+            </p>
+
+            <ul class="feature-list">
+              <li><span class="check">✓</span> Strategic digital planning</li>
+              <li><span class="check">✓</span> Premium, conversion-focused design</li>
+              <li><span class="check">✓</span> Clear communication and execution</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Our process</span>
+            <h2>Simple, clear, and built around growth.</h2>
+          </div>
+
+          <div class="process-grid">
+            <div class="step">
+              <div class="step-number">01</div>
+              <h3>Discover</h3>
+              <p>We learn your goals, market, competitors, and challenges to shape the right approach.</p>
+            </div>
+
+            <div class="step">
+              <div class="step-number">02</div>
+              <h3>Design</h3>
+              <p>We build a compelling identity and online experience tailored to your audience.</p>
+            </div>
+
+            <div class="step">
+              <div class="step-number">03</div>
+              <h3>Deliver</h3>
+              <p>We launch polished campaigns, websites, and marketing assets that perform.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="results">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Results</span>
+            <h2>Impact that moves businesses forward.</h2>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <strong>10k+</strong>
+              <span>Qualified leads</span>
+            </div>
+            <div class="stat-box">
+              <strong>32%</strong>
+              <span>Average conversion lift</span>
+            </div>
+            <div class="stat-box">
+              <strong>4.9/5</strong>
+              <span>Client satisfaction</span>
+            </div>
+            <div class="stat-box">
+              <strong>85%</strong>
+              <span>Repeat clients</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Recent work</span>
+            <h2>Digital solutions designed for real business growth.</h2>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project">
+              <div class="project-visual">
+                <span class="shape a"></span>
+                <span class="shape b"></span>
+              </div>
+              <div class="project-body">
+                <span class="tag">Brand Launch</span>
+                <h3>Nova Heights</h3>
+                <p>Positioned a real-estate business with a strong digital identity and lead funnel.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-visual" style="background: linear-gradient(135deg, rgba(248,185,74,0.2), rgba(6,20,30,0.18)), linear-gradient(160deg, #123649, #0a1d2b);">
+                <span class="shape a" style="width: 150px; height: 110px;"></span>
+                <span class="shape b" style="width: 130px; height: 130px;"></span>
+              </div>
+              <div class="project-body">
+                <span class="tag">E-Commerce</span>
+                <h3>Summit Cart</h3>
+                <p>Created a premium storefront experience that improved conversion and customer trust.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-visual" style="background: linear-gradient(135deg, rgba(89,215,197,0.18), rgba(6,20,30,0.18)), linear-gradient(160deg, #133a4c, #0b1d2f);">
+                <span class="shape a" style="width: 180px; height: 92px;"></span>
+                <span class="shape b" style="width: 165px; height: 120px;"></span>
+              </div>
+              <div class="project-body">
+                <span class="tag">Marketing</span>
+                <h3>Harbor Solutions</h3>
+                <p>Built a lead-generation engine using strategy, messaging, and digital visibility.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-wrap" id="contact">
+        <div class="container">
+          <div class="cta-box">
+            <div>
+              <h2>Ready to grow your business?</h2>
+              <p>Let’s build a digital presence that helps your brand stand out and convert more customers.</p>
+            </div>
+
+            <a class="btn btn-primary" href="mailto:hello@malonenetagencies.com">
+              hello@malonenetagencies.com
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-wrap">
+        <div class="brand">
+          <span class="brand-mark">M</span>
+          <span>Malone Net Agencies</span>
+        </div>
+
+        <div class="footer-copy">© <span id="year"></span> Malone Net Agencies. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
